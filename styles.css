@@ -1,0 +1,84 @@
+/* Grundlegende Reset-Styles für alle Elemente */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Hintergrundfarbe und Schriftfarbe */
+body {
+    background-color: #f4f4f9; /* Helle Hintergrundfarbe */
+    font-family: 'Arial', sans-serif; /* Schriftart */
+    color: #333; /* Dunkle Schriftfarbe */
+    line-height: 1.6; /* Zeilenhöhe */
+    padding: 20px; /* Innenabstand */
+}
+
+/* Container für die Hauptinhalte */
+.container {
+    max-width: 1000px; /* Maximale Breite */
+    margin: 0 auto; /* Zentriert den Container */
+    padding: 20px; /* Innenabstand */
+    background: #fff; /* Weiße Hintergrundfarbe für den Container */
+    border-radius: 8px; /* Abgerundete Ecken */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Schatten */
+}
+
+/* Bildstil */
+img {
+    max-width: 100%; /* Bild passt sich der Breite des Containers an */
+    height: auto; /* Höhe automatisch */
+    display: block; /* Blockelement */
+    margin: 0 auto; /* Zentriert das Bild */
+}
+
+/* Eingabefelder */
+input[type="text"] {
+    width: 100%; /* Vollbreite */
+    padding: 10px; /* Innenabstand */
+    margin: 10px 0; /* Außenabstand */
+    border: 1px solid #ccc; /* Graue Randfarbe */
+    border-radius: 4px; /* Abgerundete Ecken */
+    font-size: 16px; /* Schriftgröße */
+}
+
+/* Button-Stil */
+button {
+    background-color: #5a67d8; /* Hintergrundfarbe des Buttons */
+    color: #fff; /* Schriftfarbe des Buttons */
+    border: none; /* Kein Rand */
+    border-radius: 4px; /* Abgerundete Ecken */
+    padding: 10px 15px; /* Innenabstand */
+    font-size: 16px; /* Schriftgröße */
+    cursor: pointer; /* Zeiger-Cursor */
+    transition: background-color 0.3s ease; /* Übergangseffekt */
+}
+
+/* Button Hover-Effekt */
+button:hover {
+    background-color: #434190; /* Dunklere Hintergrundfarbe bei Hover */
+}
+
+/* Überschrift */
+h1, h2 {
+    margin-bottom: 20px; /* Außenabstand */
+}
+
+/* Nachricht-Styles */
+.message {
+    background-color: #e2e8f0; /* Helle Hintergrundfarbe für Nachrichten */
+    border-left: 5px solid #3182ce; /* Blaue linke Grenze */
+    padding: 10px; /* Innenabstand */
+    margin: 10px 0; /* Außenabstand */
+    border-radius: 4px; /* Abgerundete Ecken */
+}
+
+.head {
+
+    font-family: 'Arial', sans-serif; /* Den Font hier anpassen */
+    font-size: 48px; /* Größe der Überschrift */
+    color: #ff0000; /* Textfarbe */
+    text-align: center; /* Zentriert die Überschrift */
+    margin-top: 20px; /* Abstand oben */
+
+}
