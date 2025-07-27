@@ -10,7 +10,7 @@
     <div class="container">
     <?php
 
-echo '<p class="head">Raceguesser></p>';
+echo '<h1 class="game-title">Raceguesser</h1>';
 // Cookie-Name für die Speicherung der Anzahl der Aktionen
 $zaehlerCookieName = "aktion_zaehler";
 
@@ -690,7 +690,6 @@ $hallo = array(
 
 $anzahl = count($hallo);
 
-echo $anzahl;
 // Prüfen, ob es ein neues Bild gibt
 
     // Zufälliges Bild und Länder setzen, falls noch kein Cookie vorhanden ist
@@ -708,7 +707,7 @@ echo $anzahl;
 
 
 // Punkte und Zähler erhöhen, wenn eine Antwort gegeben wurde
-if (isset($_POST['race'])) {
+if (isset($_POST['race']) or isset($zaehler)) {
     // Zähler um 1 erhöhen
     $zaehler++;
     // Cookies aktualisieren
@@ -721,21 +720,20 @@ if (isset($_POST['race'])) {
 
 // Prüfen, ob der Zähler 10 erreicht hat
 if ($zaehler < 11) {
-    // Bild anzeigen (Beispielbild, sollte angepasst werden)
-    echo '<img src="image/'.$image.'.jpg"><br><br>';
-    // Punktestand anzeigen
-    echo "Dein aktueller Punktestand: " . $punkte . "<br>";
+        echo '<div class="game-round">';
+        echo '<img class="country-image" src="image/'.$image.'.jpg" alt="Bild zum Raten"><br><br>';
+        echo '<div class="score">Dein aktueller Punktestand: <span class="score-value">' . $punkte . '</span></div>';
 
     // Formular für die Benutzereingabe anzeigen
     $selectedCountry = isset($_POST['race']) ? $_POST['race'] : '';
     
     
-    echo '<form method="post" style="display: flex; gap: 20px;">';
+    echo '<form method="post" class="guess-form">';
 
     // Europa-Liste
-    echo '<details style="width: 200px;">';
+    echo '<details class="continent-list europa">';
         echo '<summary>Europa</summary>';
-        echo '<select name="race" size="10" style="width: 100%; margin-top: 10px;">';
+        echo '<select name="race" size="10" class="country-select">';
         echo '<option value="Albanien">Albanien</option>';
         echo '<option value="Andorra">Andorra</option>';
         echo '<option value="Belgien">Belgien</option>';
@@ -847,6 +845,7 @@ if ($zaehler < 11) {
         echo '<option value="Gabun">Gabun</option>';
         echo '<option value="Gambia">Gambia</option>';
         echo '<option value="Ghana">Ghana</option>';
+        echo '<option value="Guinea">Guinea</option>';
         echo '<option value="Kamerun">Kamerun</option>';
         echo '<option value="Kenia">Kenia</option>';
         echo '<option value="Lesotho">Lesotho</option>';
@@ -942,22 +941,31 @@ if ($zaehler < 11) {
     echo '</details>';
     
 echo '<br>';
-echo '<button type="submit" style="margin-top: 20px;">Raten</button>';
+echo '<button type="submit" class="submit-btn">Raten</button>';
 echo '</form>';
+echo '</div>';
 
 } else {
-    echo "Du hast " . $punkte . "Punkte erreicht<br>";
+
+    echo '<div class="game-end">';
+    echo '<div class="final-score">Du hast <span class="score-value">' . $punkte . '</span> Punkte erreicht</div>';
+       
     // Wenn der Zähler 10 erreicht hat, Endauswertung
     if ($punkte == 0) {
         echo 'Entweder bist du dumm oder woke.';
-    } elseif ($punkte >= 1 && $punkte <= 3) {
+    } elseif ($punkte >= 1 && $punkte <= 10) {
         echo 'Na immerhin ein paar Punkte.';
-    } elseif ($punkte >= 4 && $punkte <= 6) {
-        echo 'Halbe Miete ist drin.';
-    } elseif ($punkte >= 7 && $punkte <= 9) {
+    } elseif ($punkte >= 11 && $punkte <= 20) {
+        echo 'Halbe Miete ist drin. lowkey Rassist';
+    } elseif ($punkte >= 21 && $punkte <= 30) {
         echo 'Ziemlich rassistisch, aber noch nicht ganz.';
-    } elseif ($punkte == 10) {
-        echo '100% rassistisch, du willst bestimmt wieder Master-Slave-Kategorien in Git einführen.';
+    } elseif ($punkte >= 31) {
+        $rando = mt_rand(1, 2);
+        if ($rando == 1){
+            echo '200% Rechts lowkey Hitler 2.0 traurieges Leben :(';
+        }else{
+            echo '100% racist, du willst bestimmt wieder Master-Slave-Kategorien in Git einführen.';
+        }
     }
 
     // Zähler und Punkte zurücksetzen
@@ -968,13 +976,12 @@ echo '</form>';
     setcookie($punkteCookieName, $punkte, time() + (30 * 24 * 60 * 60), "/");
 
     // Button zum Neustarten
-    echo '<form method="get"><button type="submit">Neu starten</button></form>';
+    echo '<form method="get"><button type="submit" class="restart-btn">Neu starten</button></form>';
+    echo '</div>';
 
 }
-echo 'Achtung das ist Satire nicht ernstnemen';
+echo '<div class="satire-warning">Achtung das ist Satire nicht ernstnemen</div>';
 ?>
     </div>
 </body>
 </html>
-
-
